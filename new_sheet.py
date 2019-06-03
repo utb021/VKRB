@@ -13,6 +13,7 @@ ecg_peaks_ind, ecg_peaks = get_indices_of_R_peaks(sig2)
 
 phase_shift = get_phase_shift(ppg_sist_peaks, ecg_peaks)
 print(phase_shift)
+get_shift_by_peaks(ecg_peaks, ppg_sist_peaks, 300)
 
 x = np.arange(0, len(new_ppg))
 y = np.array(new_ppg[:len(new_ppg)])
@@ -27,4 +28,3 @@ plt.plot(x, y)
 plt.plot(ppg_sist_ind, ppg_sist_peaks, 'x')
 
 plt.show()
-

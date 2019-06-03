@@ -81,3 +81,17 @@ def get_phase_shift(sig1, sig2):
     DESCRETISATION_PERIOD = 1/300
     return shift*DESCRETISATION_PERIOD
 
+def get_shift_by_peaks(ecg_p, ppg_p, nyqyist_freq):
+	if ecg_p[0] > ppg_p[0]:
+		ppg_p = ppg_p[1:len(ecg_p)]
+	else:
+		ppg_p = ppg_p[0:len(ecg_p)]
+	ecg_p = ecg_p[0:len(ppg_p)]
+	ecg_p = np.asarray(ecg_p)
+	ppg_p = np.asarray(ppg_p)
+	diff = np.mean(ecg_p - ppg_p) / nyqyist_freq
+
+	print("true shift by peaks ", diff)
+
+
+	return nyqyist_freq
